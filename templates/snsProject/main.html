@@ -2,9 +2,165 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        input {
+            box-shadow: none;
+        }
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            padding-top: 100px;
+        }
+        .container > div {
+            height: 100vh;
+        }
+        .feed {
+            width: 50%;
+            background-color: orange;
+            margin-right: 256px;
+        }
+        
+        .profile {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .list {
+            width: 25%;
+            left: 62%;
+        }
+    </style>
     <title>Title</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg bg-white position-fixed w-100">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">SNS APP</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          </ul>
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        </div>
+        <div>
+            <span class="material-symbols-outlined">home</span>
+            <span class="material-symbols-outlined">send</span>
+            <span class="material-symbols-outlined">add_box</span>
+            <span class="material-symbols-outlined">explore</span>
+            <span class="material-symbols-outlined">favorite</span>
+        </div>
+
+      </div>
+    </nav>
+    <div class="container d-flex justify-content-center text-center">
+        <div class="border border-light-subtle bg-white feed">
+            
+            {% for feed in feeds %}
+            <div class="feed_box">
+                <div class="d-flex align-items-center m-3">
+                    <img class="profile" src="{{ feed.profile_image }}" alt="profile" />
+                    <div> {{ feed.user_id }}</div>
+                </div>
+                <div>
+                    <img class="w-100" src="{{ feed.image }}" alt="image" />
+                </div>
+                <div class="text-start m-3">
+                    <div class="d-flex mt-2 justify-content-between">
+                        <div>
+                            <span class="material-symbols-outlined">favorite</span>
+                            <span class="material-symbols-outlined">chat_bubble</span>
+                            <span class="material-symbols-outlined">send</span>
+                        </div>
+                        <div>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+                    <div>liked by <b>janja</b> and <b>{{ feed.like_count }} others</b></div>
+                    <div><b>{{ feed.user_id }}</b> {{ feed.content }}</div>
+                    <div><b>aaa </b> I wish I come there</div>                
+                    <div><b>bbb </b>input comments</div>
+                    <div class="">
+                        <label for="exampleFormControlInput1" class="form-comment"></label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add a comment">
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        
+        </div>
+        
+        <!-- right -->
+        <div class="list position-fixed text-start ms-5">
+            <div class="d-flex align-items-center">
+                <img class="profile" src="https://yt3.googleusercontent.com/V9sqo4C6K-sbjDogTQdWLiyviw2MyGWPiHLjoF3Us71MKb677V3SQ8KqhorzqHMplgedG6iy=s900-c-k-c0x00ffffff-no-rj" alt="profile" />
+                <div class="d-flex flex-column ms-2">
+                    <div><b>jin.99</b></div>
+                    <div style="color: lightgrey">janja kim</div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between my-2">
+                <div style="color: gray">Recommendations for you </div>
+                <div><a href="#">See all</a></div>
+            </div> 
+            <div class="mt-3">
+                <div class="d-flex align-items-center">
+                    <img class="profile" src="https://upload.wikimedia.org/wikipedia/en/3/30/Miffy%2C_by_Dick_Bruna.jpg" alt="profile" />
+                    <div class="d-flex flex-column m-2">
+                        <div><b>w000uju</b></div>
+                        <div style="color: lightgrey">Dongsaen</div>
+                    </div>
+                </div>
+                          <div class="d-flex align-items-center">
+                    <img class="profile" src="https://upload.wikimedia.org/wikipedia/en/3/30/Miffy%2C_by_Dick_Bruna.jpg" alt="profile" />
+                    <div class="d-flex flex-column m-2">
+                        <div><b>w000uju</b></div>
+                        <div style="color: lightgrey">Dongsaen</div>
+                    </div>
+                </div>
+                          <div class="d-flex align-items-center">
+                    <img class="profile" src="https://upload.wikimedia.org/wikipedia/en/3/30/Miffy%2C_by_Dick_Bruna.jpg" alt="profile" />
+                    <div class="d-flex flex-column m-2">
+                        <div><b>w000uju</b></div>
+                        <div style="color: lightgrey">Dongsaen</div>
+                    </div>
+                </div>
+                          <div class="d-flex align-items-center">
+                    <img class="profile" src="https://upload.wikimedia.org/wikipedia/en/3/30/Miffy%2C_by_Dick_Bruna.jpg" alt="profile" />
+                    <div class="d-flex flex-column m-2">
+                        <div><b>w000uju</b></div>
+                        <div style="color: lightgrey">Dongsaen</div>
+                    </div>
+                </div>
+                          <div class="d-flex align-items-center">
+                    <img class="profile" src="https://upload.wikimedia.org/wikipedia/en/3/30/Miffy%2C_by_Dick_Bruna.jpg" alt="profile" />
+                    <div class="d-flex flex-column m-2">
+                        <div><b>w000uju</b></div>
+                        <div style="color: lightgrey">Dongsaen</div>
+                    </div>
+                </div>
+                          <div class="d-flex align-items-center">
+                    <img class="profile" src="https://upload.wikimedia.org/wikipedia/en/3/30/Miffy%2C_by_Dick_Bruna.jpg" alt="profile" />
+                    <div class="d-flex flex-column m-2">
+                        <div><b>w000uju</b></div>
+                        <div style="color: lightgrey">Dongsaen</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
 
 </body>
 </html>
